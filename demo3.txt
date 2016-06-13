@@ -1,0 +1,79 @@
+jQueryTween是一款轻量级的jQuery补间动画工具库插件。使用jQueryTween可以制作出各种平滑的动画过渡效果。该插件基于tween.js，旨在简化各种补间动画操作，提供高性能的硬件加速动画。
+ 为什么要使用jQueryTween？
+
+jQueryTween是一个轻量级、使用简单的操作tween.js的补间动画库。它使用jQuery来简化各种操作。
+它支持各种动画过渡效果，如transform、opacity、color高达每秒60帧的backgroundPosition。
+jQueryTween还能制作平滑的scrollTo动画。
+jQueryTween最小版本只有8K，加上6K的tween.js，你可以不使用庞大和复杂的动画库引擎就能完成各种很酷的动画效果。
+注意tween.js并没有包含在jQueryTween中，它被放置在AIO包中。
+ jQueryTween的特点
+
+可以使用所有的tween.js的easing效果，可以制作延时和重复动画。
+可以为onUpdate或onComplete事件提供回调函数。
+当使用少量的补间动画属性的时候，可以调整性能（performance）。
+大多数属性你不需要设置初始化值，创建会使用当前的属性值，除了transform(translate,rotate,scale)和position(top,right,bottom,left)。
+可以对补间动画进行控制：播放/暂停/停止。
+可以使用scrollTo对窗口或某个目标进行补间动画。
+可以对文本进行color和background-color补间动画。
+可以对位置position进行补间动画：top, bottom, left, right（对定位方式为absolute或relative的元素）
+可以对background-position进行补间动画（仅在X和Y使用百分比值的情况下）。
+可以对transform-translate3d进行补间动画。
+可以对transform-rotateX、rotateY、rotateZ进行补间动画。
+可以对transform-scale进行补间动画。
+可以对透明度opacity进行补间动画。
+ 使用方法
+使用该补间动画插件首先要引入必要的依赖文件。你可以使用AIO包（all in one）。
+<script type="text/javascript" src="../assets/js/jQueryTween-aio-min.js">                
+或者使用单独的文件。
+<script type="text/javascript" src="../assets/js/RequestAnimationFrame.js">
+<script type="text/javascript" src="../assets/js/tween.min.js">   
+<script type="text/javascript" src="../assets/js/jQueryTween.min.js">                
+ 调用插件
+
+基本的调用方法：
+$('#selector').jQueryTween(options,callback,special);               
+注意：最好使用一个jQuery ID选择器来执行补间动画。
+ 高级例子
+
+// Complex example jQueryTween syntax 
+$('#selector').jQueryTween({
+    from: {
+        opacity: 1,
+        translate: {x:0, y:0, z:0},
+        rotate: {x:0, y:0, z:0},
+        scale: 1
+    }, 
+    to: {
+        opacity: 0.5, 
+        translate: {x: 150, y: 50, z: -100}, 
+        rotate: {x: 5, y:15, z:-25},
+        scale: 1.5
+    }, 
+    repeat: 2, // can be number or 'Infinity'
+    duration: 1500,
+    easing: TWEEN.Easing.Exponential.InOut, // my favorite
+    delay: 500,
+}, function() {
+    //do some cool stuff when tween finished animating
+}, function() {
+    //do some cool stuff while tween is running 
+});                
+ ScrollTo补间动画
+
+// Scroll to top of window
+$('#button').on('click', function() {
+    $('body').jQueryTween({ to: { scroll: 0 } });
+});
+// Scroll to element when clicking anchor links
+$('a#button').on('click', function(e) {
+    var target = $( $.attr(this, 'href') );
+    $('#element').jQueryTween({ to: { scroll: $(target).offset().top } });
+});                
+ 补间动画控制
+
+// stops all the object's tweens
+$('.selector').stop();
+ // pauses all the object's tweens 
+$('.selector').pause();
+// resumes all the object's tweens
+$('.selector').play(); 
