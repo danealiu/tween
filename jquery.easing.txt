@@ -1,0 +1,24 @@
+该插件基于jQuery，所以需要同时引入jQuery库文件和Easing js文件。
+
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/jquery.easing.min.js"></script> 
+jQuery Easing是在jQuery原有的动画效果上进行了扩展，所以使用时可以根据jQuery原有的动画函数进行扩展。
+
+支持toggle()、slideUp()、slideDown()、show()、hide()、animation等jQuery内置的动画效果，使用代码如下：
+
+$(element).slideUp({ 
+    duration: 1000,  
+    easing: method,  
+    complete: callback 
+}); 
+参数duration：定义动画运动时间，毫秒，其实就是速度，时间越短，运动速度越快。
+
+参数easing：指定动画效果，Easing js提供多种动画效果，有匀速运动、变加速运动、缓冲波动效果，它们 是：
+linear，swing，jswing，easeInQuad，easeOutQuad，easeInOutQuad，easeInCubic， easeOutCubic，easeInOutCubic，
+easeInQuart，easeOutQuart，easeInOutQuart， easeInQuint，easeOutQuint，easeInOutQuint，easeInSine，easeOutSine，
+ easeInOutSine，easeInExpo，easeOutExpo，easeInOutExpo，easeInCirc， easeOutCirc，easeInOutCirc，easeInElastic，
+easeOutElastic，easeInOutElastic， easeInBack，easeOutBack，easeInOutBack，easeInBounce，easeOutBounce，easeInOutBounce.
+
+参数complete：是回调函数
+
+效果参考：http://easings.net/zh-cn
